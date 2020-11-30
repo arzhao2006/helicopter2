@@ -16,11 +16,6 @@ function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
 	
-	redbox1 = createSprite(400, 660, 150, 20);
-	redbox2 = createSprite(325, 630, 20, 70);
-	redbox3 = createSprite(475, 630, 20, 70);
-
-
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
@@ -36,7 +31,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -44,11 +39,23 @@ function setup() {
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
+	 redbox1 = createSprite(400, 660, 155, 20);
+	 redbox1.shapeColor="red"
+	 redbox2 = createSprite(320, 630, 20, 80);
+	 redbox2.shapeColor="red"
+	 redbox3 = createSprite(475, 630, 20, 80);
+	 redbox3.shapeColor="red"
+ 
+	 boxBottomBody=Bodies.rectangle(400,660,155,20,{isStatic:true});
+	 World.add(world,boxBottomBody)
+ 
+	 boxLeftBody=Bodies.rectangle(320,630,20,80,{isStatic:true});
+	 World.add(world,boxLeftBody)
+ 
+	 boxRightBody=Bodies.rectangle(475,630,20,80,{isStatic:true});
+	 World.add(world,boxRightBody)
 
-	Engine.run(engine);
-
-	drawSprites();
-  
+	Engine.run(engine); 
 }
 
 
